@@ -1,7 +1,3 @@
-Testing Repo...
-
-Checking if my github push pull is working or not.
-
-Checking second Push ...
-
-Now pushing my flask project..
+This is my first flask project
+Its basically a to-do app.
+Tried to implement the CURD technique using this project.
