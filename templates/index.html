@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask To-Do App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-6 rounded shadow-md w-96">
+        <h2 class="text-xl font-bold mb-4">To-Do List</h2>
+        
+        <form action="/add" method="post" class="flex mb-4">
+            <input type="text" name="title" placeholder="New task..." required
+                class="flex-grow border p-2 rounded-l">
+            <button type="submit" class="bg-blue-500 text-white p-2 rounded-r">Add</button>
+        </form>
+
+        <ul>
+            {% for task in tasks %}
+                <li class="flex justify-between items-center bg-gray-200 p-2 rounded mb-2">
+                    <span class="{% if task.completed %}line-through text-gray-500{% endif %}">
+                        {{ task.title }}
+                    </span>
+                    <div>
+                        {% if not task.completed %}
+                            <a href="/complete/{{ task.id }}" class="text-green-500 mx-2">✔</a>
+                        {% endif %}
+                        <a href="/delete/{{ task.id }}" class="text-red-500">🗑</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
